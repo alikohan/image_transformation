@@ -2,7 +2,7 @@
 apply transformation functions to images
 
 suggested functions :
-\na = a + 100
-\na = a * 2
-\na = a ** 1.6
-\na = 255 * log(a + 1) / log(256)
+<br />a = a + 100
+<br />a = a * 2
+<br />a = a ** 1.6
+<br />a = 255 * log(a + 1) / log(256)
