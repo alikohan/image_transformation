@@ -1,7 +1,7 @@
 # image_transformation
 apply transformation functions to images
 <br />
-run ui file
+run ui.py file
 <br />
 suggested functions :
 <br />a = a + 100
