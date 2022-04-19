@@ -68,7 +68,7 @@ Button(root, text="EXIT", font=('arial Bold', 25), bg="#222", fg="#f33",
 
 entry1 = Entry(root, text='fileName', font='arial 25', justify='left')
 entry1.grid(row=4, columnspan=2, sticky=N+E+W+S, padx=5, pady=5)
-entry1.insert(0, 'test.jpg') # default text
+entry1.insert(0, 'test1.jpg') # default text
 
 entry2 = Entry(root, text='formula', font='arial 20', justify='left')
 entry2.grid(row=12, columnspan=2, sticky=N+E+W+S, padx=5, pady=5)
