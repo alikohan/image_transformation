@@ -5,7 +5,7 @@ from logging import exception
 import transformation
 import colorspace
 
-#creating instance of TK
+# creating instance of TK
 root = Tk()
 
 root.configure(background="#444")
@@ -18,15 +18,20 @@ def applyFormula():
         pixels = image.load()
         function = entry2.get()
 
-        if not transformation.testTransformationPlot(pixels, image.width, image.height, function):
-            raise exception()
-        elif(hadProblem):
-            mainLabel.config(text = "problem has been resolved :)")
-        
-        thread = threading.Thread(target=transformation.transformationPlot, args=(
-            pixels, image.width, image.height, function, image))
-        thread.start()
+        if function[0] == "[":
+            thread = threading.Thread(target=transformation.transformationPlotPiecewise, args=(
+                pixels, image.width, image.height, function, image))
+            thread.start()
 
+        else:
+            if not transformation.testTransformationPlot(pixels, function):
+                raise exception()
+            elif(hadProblem):
+                mainLabel.config(text = "problem has been resolved :)")
+            
+            thread = threading.Thread(target=transformation.transformationPlot, args=(
+                pixels, image.width, image.height, function, image))
+            thread.start()
     except:
         hadProblem = True
         mainLabel.config(text = "error! please check arguments.")
@@ -40,7 +45,7 @@ def grayscaleButton():
 def closeButton():
     root.destroy()
 
-#setting title for the window
+# setting title for the window
 root.title("constract")
 
 mainLabel = Label(root, text="welcome!", font=("arial Bold", 15), fg="white", bg="#222", height=2)
@@ -63,10 +68,10 @@ Button(root, text="EXIT", font=('arial Bold', 25), bg="#222", fg="#f33",
 
 entry1 = Entry(root, text='fileName', font='arial 25', justify='left')
 entry1.grid(row=4, columnspan=2, sticky=N+E+W+S, padx=5, pady=5)
-entry1.insert(0, 'test.jpg') #default text
+entry1.insert(0, 'test.jpg') # default text
 
 entry2 = Entry(root, text='formula', font='arial 20', justify='left')
 entry2.grid(row=12, columnspan=2, sticky=N+E+W+S, padx=5, pady=5)
-entry2.insert(0, 'a = a + 50') #default text
+entry2.insert(0, 'a = a + 50') # default text
 
 root.mainloop()
