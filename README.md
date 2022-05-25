@@ -11,3 +11,4 @@ suggested functions :
 <br />a = a ** 1.6
 <br />a = 255 * log(a + 1) / log(256)
 <br />[0, 50] a = a ** 1.3 [50, 80] a = a ** 1.2
+<br />[0, 10] a = 0 [10, 255] a = 255
